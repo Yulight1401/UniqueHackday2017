@@ -1,0 +1,23 @@
+.slider-container{
+}
+.fragment-container{
+  position: absolute;
+  height: 80%;
+  top: 10%;
+  width: 2000px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  left: 100px;
+}
+.fragment-item{
+  position: absolute;
+  width: 500px;
+  background-color: white;
+  height: 100%;
+}
+.fragment-item[data-index = '1']{
+  left: 0px;
+}
+.fragment-item[data-index = '2']{
+  left: 600px;
+}

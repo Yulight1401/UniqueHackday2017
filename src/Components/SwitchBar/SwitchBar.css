@@ -1,0 +1,26 @@
+.container{
+  position: fixed;
+  left: 50%;
+  bottom: 10%;
+  width: 200px;
+  margin: 0px;
+  margin-left: -100px;
+  padding: 10px;
+  text-align: center;
+}
+.container span{
+  float: left;
+  margin-left: 20px;
+  transition: all 0.5s;
+}
+.untoggled{
+  height: 22px;
+  width: 4px;
+  background-color: #dddddf;
+}
+.toggled{
+  margin-top: -7px;
+  height: 35px;
+  width: 4px;
+  background-color: #f4aa41;
+}
