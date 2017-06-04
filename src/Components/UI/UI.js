@@ -11,9 +11,9 @@ function SeaLevel (props) {
 function DataUI (props) {
   return (
     <div className = {Styles['dataui']}>
-      <div className = {Styles['dataui-money']} style = {{width: props.money}}><span>金钱:{}</span></div>
-      <div className = {Styles['dataui-technology']} style = {{width: props.technology}}><span>科技：{}</span></div>
-      <div className = {Styles['dataui-people']} style = {{width: props.people}}><span>民意：{}</span></div>
+      <div className = {Styles['dataui-money']} style = {{width: props.money}}><span>金钱：{props.money}</span></div>
+      <div className = {Styles['dataui-technology']} style = {{width: props.technology}}><span>科技：{props.technology}</span></div>
+      <div className = {Styles['dataui-people']} style = {{width: props.people}}><span>民意：{props.people}</span></div>
     </div>
   )
 }
@@ -37,9 +37,9 @@ class ChoosePanel extends React.Component {
     element.style.transform = 'translate(' + this.offsetX + 'px,0) rotateZ(' + this.offsetX / 20 + 'deg)'
     if (Math.abs(this.offsetX) > MAXRAGE) {
       if (this.offsetX < 0) {
-        this.showToast('否定')
+        this.showToast('不好')
       } else {
-        this.showToast('确定')
+        this.showToast('好')
       }
     } else {
       this.toast.style.opacity = 0
@@ -64,14 +64,24 @@ class ChoosePanel extends React.Component {
   toggleTrue () {
     this.props.handletrue()
     this.panel.style.opacity = 0
+    this.toast.style.opacity = 0
+    let self = this
+    setTimeout(() => {
+      self.panel.style.transform = 'translate(0, 0)'
+    }, 500)
   }
   toggleFalse () {
     this.props.handlefalse()
     this.panel.style.opacity = 0
+    this.toast.style.opacity = 0
+    let self = this
+    setTimeout(() => {
+      self.panel.style.transform = 'translate(0, 0)'
+    }, 500)
   }
   render () {
     return (
-      <div onTouchStart = {this.handleTouchStart} className = {Styles['choosepanel-container']} ref = {(panel) => { this.panel = panel }}>
+      <div id='choosepanel' onTouchStart = {this.handleTouchStart} className = {Styles['choosepanel-container']} ref = {(panel) => { this.panel = panel }}>
         <div className = {Styles['choosepanel-text']} ref = {(text) => { this.text = text } }>
           <p>{this.props.poster}</p>
           <p>{this.props.text}</p>
@@ -96,22 +106,19 @@ class UI extends React.Component {
     }
   }
   handlePanelFalse = () => {
-    this.setState({
-      choosing: false
-    })
+    this.props.handlefalse()
   }
   handlePanelTrue = () => {
-    this.setState({
-      choosing: false
-    })
+    this.props.handletrue()
   }
   render () {
     return (
       <div className = {Styles['container']}>
-        {this.state.choosing && <div className = {Styles['mask']}></div>}
-        <ChoosePanel text = {this.state.text} poster = {this.state.poster} handletrue = {this.handlePanelTrue} handlefalse = {this.handlePanelFalse}/>
-        <SeaLevel sealevel = {this.state.sealevel}/>
-        <DataUI money = {this.state.money} technology = {this.state.technology} people = {this.state.people}/>
+        {this.props.choosing && <div className = {Styles['mask']}></div>}
+        <div className = {Styles['toast']} id = "ui-toast">{this.props.news}</div>
+        <ChoosePanel text = {this.props.text} poster = {this.props.poster} handletrue = {this.handlePanelTrue} handlefalse = {this.handlePanelFalse}/>
+        <SeaLevel sealevel = {this.props.sealevel}/>
+        <DataUI money = {this.props.money} technology = {this.props.technology} people = {this.props.people}/>
       </div>
     )
   }

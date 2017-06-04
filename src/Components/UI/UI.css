@@ -19,6 +19,7 @@
   top: 31px;
 }
 .dataui-money span{
+  width: 50px;
   color: #FFEB5E;
   position: absolute;
   font-size: 12px;
@@ -33,6 +34,7 @@
   top: 78px;
 }
 .dataui-technology span{
+  width: 50px;
   color: #6C90DF;
   position: absolute;
   font-size: 12px;
@@ -47,6 +49,7 @@
   top: 124px;
 }
 .dataui-people span{
+  width: 50px;
   color: #DF6C6C;
   position: absolute;
   font-size: 12px;
@@ -65,11 +68,11 @@
 }
 .sealevel{
   position: absolute;
-  width: 50px;
+  width: 30px;
   height: 60px;
-  z-index: 1000;
-  bottom: 20px;
-  left: 20px;
+  z-index: 4;
+  bottom: 15px;
+  left: 35px;
   background: url('./Images/UI3.png');
   background-position: center;
   background-size: 100%;
@@ -82,9 +85,10 @@
 .sealevel p {
   position: absolute;
   color: #6C90DF;
-  width: 100px;
+  width: 120px;
   font-size: 12px;
   top: -20px;
+  left: -25px;
 }
 .choosepanel-container{
   position: absolute;
@@ -95,6 +99,7 @@
   width: 350px;
   height: 200px;
   z-index: 1024;
+  opacity: 0;
   transform-origin: bottom;
   transition: opacity 0.5s;
   background: url('./Images/UI2.png');
@@ -107,7 +112,7 @@
   top: 0px;
   width: 100%;
   height: 100%;
-  opacity: 0.6;
+  opacity: 0.3;
   background-color: black;
   z-index: 1023;
 }
@@ -121,6 +126,7 @@
 }
 .choosepanel-text p {
   margin: 0px;
+  font-size: 14px;
 }
 .choosepanel-toast{
   position: absolute;
@@ -130,10 +136,25 @@
   left: 8%;
   bottom: 10px;
   border-radius: 2px;
-  background-color: black;
+  background-color: #1C3D82;
   color: white;
   text-align: center;
   line-height: 35px;
   transition: all 0.5s;
   opacity: 0;
+}
+.toast{
+  transition: opacity 1s;
+  position: absolute;
+  font-size: 14px;
+  z-index: 1024;
+  color: white;
+  background-color: black;
+  opacity: 0;
+  border-radius: 5px;
+  width: 50%;
+  left: 50%;
+  margin-left: -25%;
+  top: 10%;
+  text-align: center;
 }
