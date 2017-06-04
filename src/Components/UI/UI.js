@@ -3,7 +3,7 @@ let Styles = require('./UI.css')
 function SeaLevel (props) {
   return (
     <div className = {Styles['sealevel']}>
-      <p>当前海平面为{props.sealevel}米</p>
+      <p>当前海平面变化为{parseInt(props.sealevel)}米</p>
     </div>
   )
 }
@@ -13,7 +13,7 @@ function DataUI (props) {
     <div className = {Styles['dataui']}>
       <div className = {Styles['dataui-money']} style = {{width: props.money}}><span>金钱：{props.money}</span></div>
       <div className = {Styles['dataui-technology']} style = {{width: props.technology}}><span>科技：{props.technology}</span></div>
-      <div className = {Styles['dataui-people']} style = {{width: props.people}}><span>民意：{props.people}</span></div>
+      <div className = {Styles['dataui-people']} style = {{width: props.people}}><span>民心：{props.people}</span></div>
     </div>
   )
 }

@@ -5,13 +5,46 @@ class WorkFlow {
     this.works = [
       {
         scene: 0,
-        news: '羊氏新闻：今年5月以来，受高温的持续影响，南极冰川融化加快，Z国东部平原正遭受空前危机，海平面高于下海市平均海拔。羊氏气象红色警报。xx日，x国边境城市(边检站)发生自杀式爆炸袭击，目前尚无组织宣称对此事件负责。',
+        news: '羊氏新闻：今年5月以来，受高温的持续影响，南极冰川融化加快，Z国东部平原正遭受空前危机，海平面高于下海.',
         poster: '尊敬的国王：',
-        text: '受到全球气候变暖影响，冰川消融，海水正威胁着你的国土，发挥你的智慧，领导你的国民一起阻挡海水侵蚀你的土地吧。经济：国家富裕指数，经济收入可以投入科研和社会福利之中。科研：研究更先进的技术，可以抵御温室效应。民心：人民对于执政者的满意度。指数过低，会引发社会动乱。',
+        text: '受到全球气候变暖影响，冰川消融，海水正威胁着你的国土，发挥你的智慧，领导你的国民一起阻挡海水侵蚀你的土地吧。',
         handletrue: function () {
         },
         handlefalse: function () {
           self.index = -1
+        }
+      },
+      {
+        scene: 0,
+        news: '',
+        poster: '经济：',
+        text: '国家富裕指数，经济收入可以投入科研和社会福利之中。',
+        handletrue: function () {
+        },
+        handlefalse: function () {
+          self.index = 0
+        }
+      },
+      {
+        scene: 0,
+        news: '',
+        poster: '科研：',
+        text: '研究更先进的技术，可以抵御温室效应。',
+        handletrue: function () {
+        },
+        handlefalse: function () {
+          self.index = 1
+        }
+      },
+      {
+        scene: 0,
+        news: '',
+        poster: '民心：',
+        text: '人民对于执政者的满意度。指数过低，会引发社会动乱。',
+        handletrue: function () {
+        },
+        handlefalse: function () {
+          self.index = 2
         }
       },
       {
@@ -55,6 +88,24 @@ class WorkFlow {
         }
       },
       {
+        scene: 0,
+        poster: '科技部:',
+        news: '碳捕捉技术',
+        text: '科技部请求开发碳捕捉技术，捕获空气中二氧化碳，压缩导入地下储存，有效降低温室气体',
+        handletrue: function () {
+          let money = this.state.money - 20 * MONEYRATE
+          let sealevel = this.state.sealevel + 0.1
+          let technology = this.state.technology + 30
+          this.setState({
+            money: money,
+            sealevel: sealevel,
+            technology: technology
+          })
+        },
+        handlefalse: function () {
+        }
+      },
+      {
         scene: 1,
         poster: '外事大臣',
         news: '',
@@ -77,12 +128,30 @@ class WorkFlow {
         }
       },
       {
+        scene: 2,
+        poster: '科技部:',
+        news: '国内新能源势头强劲',
+        text: '科技部请求探索页岩气等新兴能源，以代替部分化石能源',
+        handletrue: function () {
+          let money = this.state.money - 20 * MONEYRATE
+          let sealevel = this.state.sealevel + 0.1
+          let technology = this.state.technology + 20
+          this.setState({
+            money: money,
+            sealevel: sealevel,
+            technology: technology
+          })
+        },
+        handlefalse: function () {
+        }
+      },
+      {
         scene: 1,
         poster: '交通大臣提案:',
         news: '',
         text: '政府增加对私家车跨省长距离行驶的过路费',
         handletrue: function () {
-          let money = this.state.money + 50
+          let money = this.state.money + 50 * MONEYRATE
           let people = this.state.people - 20 < 0 ? (0) : (this.state.people - 20)
           let sealevel = this.state.sealevel - 0.5
           this.setState({
@@ -133,7 +202,25 @@ class WorkFlow {
         }
       },
       {
-        scene: 3,
+        scene: 1,
+        poster: '科技部:',
+        news: '生物碳技术',
+        text: '科技部请求开发生物碳技术，利用生物质能热分解成为碳化物，缓解能源压力',
+        handletrue: function () {
+          let money = this.state.money - 20 * MONEYRATE
+          let sealevel = this.state.sealevel + 0.1
+          let technology = this.state.technology + 30
+          this.setState({
+            money: money,
+            sealevel: sealevel,
+            technology: technology
+          })
+        },
+        handlefalse: function () {
+        }
+      },
+      {
+        scene: 2,
         news: '',
         poster: '环境大臣提案:',
         text: '关停排放检测不合格的工厂',

@@ -17,7 +17,7 @@ class SceneOne extends React.Component {
     this.state = {
       money: 10,  // 104 will fill the blank
       technology: 10,
-      people: 10,
+      people: 70,
       sealevel: 0,
       choosing: true,
       handletrue: function () {},
